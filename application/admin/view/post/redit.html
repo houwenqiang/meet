@@ -1,0 +1,49 @@
+{extend name="common/index"}
+
+{block name="main"}
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name">主贴列表</a><span class="crumb-step">&gt;</span><span>修改主贴</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/post/rupdate/{$rinfo.id}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                <br><br>
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                            <tr>
+                                <th><i class="require-red">*</i>主贴标题：</th>
+                                    {foreach $pinfo as $k1 => $v1}
+                                        {if $rinfo.pid == $v1.id}            
+                                           <td>  {$v1.title}</td>
+                                        {/if}
+                                    {/foreach}
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>回帖内容：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="content" size="50" value="{$rinfo.content}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
+    {/block}
+</div>
+</body>
+</html>

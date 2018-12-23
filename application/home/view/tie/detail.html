@@ -1,0 +1,252 @@
+{extend name="index/index"}
+{block name="main"}	
+		
+<!--内容 start-->
+<div id="wp" class="wp">
+    <!--留白-->
+    <div id="pt" class="bm cl"></div>
+
+        <!--包含发贴和回贴-->
+        <div id="ct" class="wp cl">
+        <!--发贴列表start-->
+        
+
+    <div id="postlist" class="pl bm">
+        <table cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="pls ptm pbm">
+                    <div class="hm">
+                    <span class="xg1">查看:</span> <span class="xi1">0</span><span class="pipe">|</span><span class="xg1">回复:</span> <span class="xi1">0</span>
+                    </div>
+                </td>
+                <td class="plc ptm pbn vwthd">
+                    <h1 class="ts">
+                        <a id="thread_subject">{$poinfo.title}</a>
+                    </h1>
+                    <span class="xg1">
+                        <a>[复制链接]</a>
+                    </span>
+                </td>
+            </tr>
+        </table>
+
+        
+        <table cellspacing="0" cellpadding="0" class="ad">
+            <tr>
+                <td class="pls"></td>
+                <td class="plc"></td>
+            </tr>
+        </table>
+        
+    
+        <div id="post_16">
+            <table id="pid16" summary="pid16" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="pls" rowspan="2">
+                    <!-- 名字 -->
+                        <a name="lastpost"></a><div class="pi"><div class="authi"><a target="_blank" class="xw1">{$poinfo -> user['uname']}</a></div></div>
+                        <div>
+                        <!-- 头像 -->
+                        <div class="avatar" onmouseover="showauthor(this, 'userinfo16')"><a target="_blank"><img src="/static/images/user_img/{$poinfo -> user['pic']}" width="50" height="50" /></a></div>
+                        <div class="tns xg2">
+                <table cellspacing="0" cellpadding="0">
+                    <th>
+                        <p><a href="" class="xi2">4</a></p>主题</th>
+                    <th>
+                        <p><a href="" class="xi2">0</a></p>好友
+                    </th>
+                        <td><p><a href="" class="xi2">35</a></p>积分</td>
+                </table>
+            <!-- </div> -->
+                <!-- <p><em><a href="home.php?mod=spacecp&amp;ac=usergroup&amp;gid=1" target="_blank">管理员</a></em></p> -->
+            <!-- </div> -->
+
+         </td>
+         <td class="plc">
+            <div class="pi">
+                <strong> <a href="">楼主</a> </strong>
+                <div class="pti">
+                    <div class="pdbt"></div>
+                    <div class="authi">
+                        <img class="authicn vm" id="authicon16" src="/static/images/user_img/{$poinfo -> user['pic']}" width="23" height="23"/>
+                        <em id="authorposton16">发表于 <span>{$poinfo.ptime | date='Y-m-d H:i:s'}</span></em>
+                    </div>
+                </div>
+            </div>
+            <div class="pct"><style type="text/css">.pcb{margin-right:0}</style>
+                <div class="pcb">
+                    <div class="t_fsz">
+                        <table cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="t_f" id="postmessage_16">{$poinfo.content}</td>
+                            </tr>
+                        </table>
+                    </div>
+                <div id="comment_16" class="cm">
+            </div>
+            <div id="post_rate_div_16"></div>
+        </div>
+        </div>
+            </td>
+            </tr>
+            <tr><td class="plc plm"></td></tr>
+            <tr> <td class="pls"></td><td class="plc" style="overflow:visible;"></td></tr>
+            <tr class="ad"><td class="pls"></td> <td class="plc"></td></tr>
+        </table>
+    </div>
+</div>
+    <!--发贴列表end-->
+        {php}$a = 0;{/php}
+        {foreach $poinfo->reply as $key => $val}
+        {php}$a++;{/php}
+    <!--回复列表start-->
+    <div class="pl bm">
+        <table cellspacing="0" cellpadding="0" class="ad">
+            <tr>
+                <td class="pls"></td>
+                <td class="plc"></td>
+            </tr>
+        </table>
+        <div id="post_16">
+            <table id="pid16" summary="pid16" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="pls" rowspan="2">
+                        <a name="lastpost"></a>
+                        <div class="pi">
+                            <div class="authi">
+                                <a href="" target="_blank" class="xw1">{$val -> user['uname']}</a>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="avatar" onmouseover="showauthor(this, 'userinfo16')">
+                                <a href="" target="_blank"><img src="/static/images/user_img/{$val -> user['pic']}" width="50" height="50"/></a>
+                            </div>
+                            <div class="tns xg2">
+                            <table cellspacing="0" cellpadding="0">
+                                <th><p><a href="" class="xi2">4</a></p>主题</th>
+                                <th>
+                                <p><a href="" class="xi2">0</a></p>好友
+                                </th>
+                                <td><p><a href="" class="xi2">35</a></p>积分</td>
+                            </table>
+                    </td>
+                    <td class="plc">
+                    <div class="pi"><strong>
+                        <a href="">{if $a==1}1楼{else/}{$a}楼{/if}</a></strong>
+                    <div class="pti">
+                    <div class="pdbt"></div>
+                    <div class="authi">
+                        <img class="authicn vm" id="authicon16" src="/static/images/user_img/{$val -> user['pic']}" width="23" height="23" />
+                        <em id="authorposton16">发表于 <span> {$val.ptime | date='Y-m-d H:i:s'}</span></em>
+                    </div>
+                    </div>
+                    </div>
+                    <div class="pct"><style type="text/css">.pcb{margin-right:0}</style>
+                    <div class="pcb">
+                    <div class="t_fsz">
+                        <table cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td class="t_f" id="postmessage_16">{$val.content}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div id="comment_16" class="cm"></div>
+                    <div id="post_rate_div_16"></div></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td class="plc plm"> </td>
+        </tr>
+        <tr>
+            <td class="pls"></td>
+            <td class="plc" style="overflow:visible;"> </td>
+        </tr>
+        <tr class="ad">
+            <td class="pls"></td>
+            <td class="plc"></td>
+        </tr>
+    </table>
+</div>
+</div>
+
+    <!--回复列表end-->
+{/foreach}
+
+    <div class="xi2 mbm pbm bbs"></div>
+        <!--[diy=diyfastposttop]-->
+            <div id="diyfastposttop" class="area"></div>
+        <!--[/diy]-->
+        <div id="f_pst" class="pl bm bmw">
+            <form method="post" id="fastpostform" action="/tie/reply/{$hcid}" >
+                <table cellspacing="0" cellpadding="0">
+                    <tr>
+                        <td class="pls">
+                            <div class="avatar">
+                             {if  isset({:session('hlogin.uname')}
+                                <img src="/static/images/user_img/{:session('hlogin.pic')}" width="50" height="50" />
+                              {/if}  
+                            </div>
+                        </td>
+                        <td class="plc">
+                            <div class="cl">
+                                <div class="hasfsl" id="fastposteditor">
+                                    <div class="tedt mtn">
+                                        <div class="bar">
+                                            <span class="y">请输入回复内容</span>
+                                        </div>
+                                        <div class="area">
+                                            <textarea rows="6" cols="80" name="content" id="fastpostmessage"  tabindex="4" class="pt"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="ptm pnpost">
+                                <input type="submit" value="发表回复" tabindex="5">
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+ </div>
+    <!--内容部分end-->
+<!--内容 end-->
+{/block}
+<!--尾部部分start-->
+	<div id="footer">
+  {foreach $winfo as $k => $v}	
+		<!--尾部左侧部分start-->
+		<div id="footer_left">
+		  <p>Powered by <strong><a href="" target="_blank">ITXDL!</a></strong> <em>X1.0</em></p>
+		  <p class="xs0">{$v.copyright}</a></p>
+		</div>
+		<!--尾部左侧部分start-->
+		
+		<!--尾部右侧部分start-->
+		<div id="footer_right">
+		    <p>
+                <a href="">手机版</a>
+                <span class="pipe">|</span>
+                <strong>
+                <a href="">{$v.wname}</a>
+                </strong>
+                ( <a href="">京ICP证110024号|京网文[2011]0019-007号|北京公安备案:1101082242</a> )&nbsp;
+                <a href="" title="防水墙保卫网站远离侵害">
+		    </p>
+		    <p class="xs0">
+                GMT+8, 2012-11-13 20:33
+                <span id="debuginfo">
+                , Processed in 0.030692 second(s), 2 queries
+                , Gzip On, Memcached On.
+                 </span>
+            </p>
+		</div>
+		<!--尾部右侧部分end-->
+	 {/foreach}	
+	</div>
+	<!--尾部部分end-->
+</body>
+</html>

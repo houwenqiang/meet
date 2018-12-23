@@ -1,0 +1,79 @@
+{extend name="common/index"}
+
+{block name="main"}
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="">用户管理</a><span class="crumb-step">&gt;</span><span>修改用户信息</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/user/update/{$uinfo.id}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody><tr>
+                            <th width="120"><i class="require-red">*</i>权限：</th>
+                            <td>
+                                <select name="qx" id="catid" class="required">
+                                    <option value="">请选择</option>
+                                    <option value="1" {if $uinfo.qx=='1'}selected{/if}>普通用户</option>
+                                    <option value="2" {if $uinfo.qx=='2'}selected{/if}>管理员</option>
+                                </select>
+                            </td>
+                        </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>用户名：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="uname" size="50" value="{$uinfo.uname}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>手机号：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="tel" size="50" value="{$uinfo.tel}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>年龄：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="age" size="50" value="{$uinfo.age}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>头像：</th>&nbsp;&nbsp;
+                                <td>
+                                    <input class="common-text required" id="title" name="pic" size="50" value="{$uinfo.pic}" type="file">&nbsp;&nbsp;&nbsp;&nbsp;<img src="/static/images/user_img/{$uinfo.pic}" width="50" height="50">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>性别：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="sex" size="50" value="w" type="radio" {if $uinfo.sex=='w'}checked{/if}>女
+                                    <input class="common-text required" id="title" name="sex" size="50" value="m" type="radio" {if $uinfo.sex=='m'}checked{/if}>男
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>禁用：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="status" size="50" value="1" type="radio" {if $uinfo.status=='1'}checked{/if}>否
+                                    <input class="common-text required" id="title" name="status" size="50" value="0" type="radio" {if $uinfo.status=='0'}checked{/if}>是
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
+    {/block}
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{extend name="common/index"}
+{block name="main"}
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="">板块管理</a><span class="crumb-step">&gt;</span><span>添加板块</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/cate/save" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <br><br>
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                            <tr>
+                                <th><i class="require-red">*</i>板块名称：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="cname" size="50" value="" type="text">
+                                </td>
+                            </tr>
+                            <th><i class="require-red">*</i>所属分区：</th>
+                            <td>
+                                <select name="pid" id="catid" class="required">
+                                <option value="">请选择</option>
+                                {foreach $pinfo as $k => $v} 
+                                    <option value="{$v.id}">{$v.name}</option>
+                                {/foreach}
+                                </select>   
+                            </td>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                <br><br>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
+{/block}

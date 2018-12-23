@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/main.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/> -->
+    <script type="text/javascript" src="/static/admin/js/libs/modernizr.min.js"></script>
+</head>
+<body>
+<div class="topbar-wrap white">
+    <div class="topbar-inner clearfix">
+        <div class="topbar-logo-wrap clearfix">
+            <h1 class="topbar-logo none"><a href="" class="navbar-brand">后台管理</a></h1>
+            <ul class="navbar-list clearfix">
+                <li><a class="on" href="">首页</a></li>
+                <li><a>网站首页</a></li>
+            </ul>
+        </div>
+        <div class="top-info-wrap">
+            <ul class="top-info-list clearfix">
+                <li><img src="/static/images/user_img/{:session('ulogin.pic')}" width="40" height="40">
+                </li>
+                <li><a href="">管理员:{:session('ulogin.uname')}</a></li>
+                <li><a href="/login/codeedit/{:session('ulogin.id')}">修改密码</a></li>
+                <li><a href="/admin/outlogin">退出</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container clearfix">
+    <div class="sidebar-wrap">
+        <div class="sidebar-title">
+            <h1>菜单</h1>
+        </div>
+        <div class="sidebar-content">
+            <ul class="sidebar-list">
+                <li>
+                    <a href="#"><i class="icon-font">&#xe003;</i>用户管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="/user/create"><i class="icon-font">&#xe026;</i>添加用户</a></li>
+                        <li><a href="/user/ulist"><i class="icon-font">&#xe005;</i>用户列表</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-font">&#xe028;</i>分区管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="/part/create"><i class="icon-font">&#xe043;</i>添加分区</a></li>
+                        <li><a href="/part/plist"><i class="icon-font">&#xe006;</i>分区列表</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-font">&#xe007;</i>板块管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="/cate/create"><i class="icon-font">&#xe009;</i>添加板块</a></li>
+                        <li><a href="/cate/clist"><i class="icon-font">&#xe031;</i>板块列表</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-font">&#xe034;</i>帖子管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="/post/post"><i class="icon-font">&#xe032;</i>主贴列表</a></li>
+                        <li><a href="/post/reply"><i class="icon-font">&#xe039;</i>回帖列表</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-font">&#xe052;</i>友情链接</a>
+                    <ul class="sub-menu">
+                        <li><a href="/fri/fcreate"><i class="icon-font">&#xe040;</i>添加链接</a></li>
+                        <li><a href="/fri/flist"><i class="icon-font">&#xe042;</i>链接列表</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#"><i class="icon-font">&#xe018;</i>系统管理</a>
+                    <ul class="sub-menu">
+                        <li><a href="/web/web"><i class="icon-font">&#xe017;</i>网站配置</a></li>
+                        <li><a href="/web/str"><i class="icon-font">&#xe013;</i>敏感词设置</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--/sidebar-->
+    {block name="main"}
+    <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font">&#xe06b;</i><span>欢迎使用谈论论坛的后台管理。</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-title">
+                <h1>快捷操作</h1>
+            </div>
+            <div class="result-content">
+                <div class="short-wrap">
+                    <a href=""><i class="icon-font">&#xe001;</i>新增用户</a>
+                    <a href=""><i class="icon-font">&#xe005;</i>新增分区</a>
+                    <a href=""><i class="icon-font">&#xe048;</i>新增板块</a>
+                    <a href=""><i class="icon-font">&#xe041;</i>新增友情链接</a>
+                </div>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-title">
+                <h1>论坛基本信息</h1>
+            </div>
+            <div class="result-content">
+                <ul class="sys-info-list">
+                    <li>
+                        <label class="res-lab">操作系统</label><span class="res-info">WINNT</span>
+                    </li>
+                    <li>
+                        <label class="res-lab">运行环境</label><span class="res-info">Apache/2.2.21 (Win64) PHP/5.3.10</span>
+                    </li>
+                    <li>
+                        <label class="res-lab">PHP运行方式</label><span class="res-info">apache2handler</span>
+                    </li>
+                    <li>
+                        <label class="res-lab">设计-版本</label><span class="res-info">v-0.1</span>
+                    </li>
+                    <li>
+                        <label class="res-lab">服务器域名/IP</label><span class="res-info">localhost [ 127.0.0.1 ]</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-title">
+                <h1>使用帮助</h1>
+            </div>
+            <div class="result-content">
+                <ul class="sys-info-list">
+                    <li>
+                        <label class="res-lab">官方交流网站：</label><span class="res-info"><a>谈论一下</a></span>
+                    </li>
+                    <li>
+                        <label class="res-lab">官方交流QQ群：</label><span class="res-info"><a>123456888</a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--/main-->
+    {/block}
+</div>
+</body>
+</html>

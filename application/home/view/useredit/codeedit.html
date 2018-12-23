@@ -1,0 +1,65 @@
+{extend name="index/index"}
+{block name="main"}
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="/useredit/codeupdate/{$uinfo.id}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                            <tr>
+                                <td colspan="2" >修改密码</td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>原密码：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="ypass" size="50" type="password">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>新密码：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="xpass" size="50"  type="password">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
+                            <!--友情链接部分start-->
+            <div id="friend_link">
+                
+                <!--友情链接标题部分start-->
+                <div id="fri_title">
+                  <span>友情链接</span>
+                </div>
+                <!--友情链接标题部分end-->
+                
+                <!--友情链接内容部分start-->
+                {foreach $finfo as $k2 => $v2}
+                <div class="fri_content">
+                    <div class="fri_left">
+                    <img src="/static/images/Url_img/{$v2.pic}"  width = "100" height = "46"/></div>
+                    <div class="fri_right">
+                      <p><strong>{$v2.title}</strong></p>
+                      <p>{$v2.url}</p>
+                      <p>{$v2.descript}</p>
+                    </div>
+                </div>
+                {/foreach}
+                <!--友情链接内容部分end-->
+                
+            </div>
+            <!--友情链接部分end-->
+{/block}

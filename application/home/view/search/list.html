@@ -1,0 +1,45 @@
+{extend name="index/index"}
+{block name="main"}	
+		<!--内容部分start-->
+		<div class="content">			
+			
+			<!--帖子列表部分start-->
+			<div class="post_list" >
+				
+				<!--帖子列表标题部分start-->
+				<div class="post_title">
+					<table cellspacing=0 cellpadding=0 width='100%'>
+						<tr>
+							<th class="list_title">帖子标题</th>
+                            <th class="list_count">作者</th>
+							<th>发布时间</th>
+						</tr>
+					</table>
+				</div>
+				<!--帖子列表标题部分end-->
+				
+				<!--帖子列表内容部分start-->
+                {foreach $searchinfo as $k => $v} 
+				<div class="post_content">
+					<table cellspacing=0 cellpadding=0 width='100%'>
+                            <tr>
+                                <td class="list_title"><a href="/tie/detail/{rg">{$v.title}</a></td> 
+                                <td class="list_count">{foreach $uinfo as $k1 => $v1}{if $v1.id == $v.uid}{$v1.uname}{/if}{/foreach}</td>
+                                <td>{$v.ptime | date='Y-m-d H:i:s'}</td>
+                            </tr> 			
+					</table>
+				</div>
+                {/foreach}
+				<!--帖子列表内容部分end-->
+				
+			</div>
+			<!--帖子列表部分end-->
+            <div class="list-page">
+                {$searchinfo | raw}
+            </div>
+        </div>
+    <!--内容部分end-->
+	
+	</div>
+	<!--网页主体部分end-->
+{/block}	

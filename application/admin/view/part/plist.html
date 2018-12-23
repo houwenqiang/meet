@@ -1,0 +1,59 @@
+{extend name="common/index"}
+    {block name="main"}
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a>首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="">分区管理</a><span class="crumb-step">&gt;</span><span class="crumb-name">分区列表</span></div>
+        </div>
+        <div class="search-wrap">
+            <div class="search-content">
+                <form action="/part/index" method="get">
+                    <table class="search-tab">
+                        <tr>
+                            <th width="220">分区名称:</th>
+                            <td><input class="common-text" placeholder="关键字" name="name" value="" id="" type="text"></td>
+                            <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="result-wrap">
+            <form action="/part/delete" id="myform" method="post">
+                <div class="result-title">
+                    <div class="result-list">
+                        <a href=""><i class="icon-font"></i>新增分区</a>
+                        <a id="batchDel"><i class="icon-font"></i>批量删除</a>
+                        <a id="updateOrd"><i class="icon-font"></i>更新排序</a>
+                    </div>
+                </div>
+                <div class="result-content">
+                    <table class="result-tab" width="100%">
+                        <tr>
+                            <th class="tc" width="5%"><input class="btn btn-primary btn2" value="删除" type="submit"></th>
+                            <th>ID</th>
+                            <th>分区名称</th> 
+                            <th>操作</th>
+                        </tr>
+                        {foreach $pinfo as $k => $v}
+                        <tr>
+                            <td class="tc"><input name="id[]" value="{$v.id}" type="checkbox"></td>
+                            <td>{$v.id}</td> 
+                            <td>{$v.name}</td>
+                            <td>
+                                <a class="link-update" href="/part/edit/{$v.id}">修改</a>
+                                <a class="link-del" href="/part/del/{$v.id}">删除</a>
+                            </td>
+                        </tr>
+                        {/foreach}
+                    </table>
+                    <div class="list-page">
+                        {$pinfo | raw}
+                    </div>                  
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--/main-->
+    {/block}

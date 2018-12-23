@@ -1,0 +1,296 @@
+{if $winfo.status == 1}
+<!DOCTYPE html>
+<html>
+<head>
+      <meta charset="utf-8">
+      <title>{$winfo.wname}</title>
+      <meta name="keywords" content="论坛,PHP">
+      <meta name="description" content="最大的社区网站">
+      <meta http-equiv="X-UA-Compatible" content="IE=8">
+      <link rel="stylesheet" type="text/css" href="/static/home/css/layout.css">
+      <link rel="stylesheet" type="text/css" href="/static/home/css/css.css">
+      <link rel="stylesheet" type="text/css" href="/static/home/css/form.css">
+      <link rel="stylesheet" type="text/css" href="/static/home/css/style_1_common.css?gQK" />
+	<link rel="stylesheet" type="text/css" href="/static/home/css/style_1_forum_viewthread.css?gQK" />
+        <style>
+        #a ul{
+            padding-left:750px;
+            list-style:none;
+        }
+        #a ul li a{
+            display:block;
+            float:left;
+            text-decoration:none;
+            font-size:16px;
+            line-height:45px;
+            font:Tahoma,'Microsoft Yahei','Simsun';
+        }
+        </style>
+    </head>
+<body>
+<!--网页顶部start-->
+  <div id="top">
+   {if isset({:session('hlogin.uname')}
+    <div id="top_main">
+        <span class="top_content_left">设为主页</span>
+        <span class="top_content_left">收藏本站</span>
+        <span class="top_content_right"><a href="/outlogin"> 退出 </a></span>
+        <span class="top_content_right"><a href="/useredit/edit/{:session('hlogin.id')}">完善信息 | </a></span>
+        <span class="top_content_right"><a href="/useredit/codeedit/{:session('hlogin.id')}">修改密码 | </a></span>
+    </div>
+    {else /}
+    <div id="top_main">
+        <span class="top_content_left">设为主页</span>
+        <span class="top_content_left">收藏本站</span>
+        <span class="top_content_right">切换到宽版</span>
+    </div>
+    {/if}
+  </div>
+<!--网页顶部end-->
+ 
+	<!--网页主体部分start-->
+	<div id="main">
+  
+		<!--网页顶部广告部分start-->
+		<!-- <div id="banner"></div> -->
+		<!--网页顶部广告部分end-->
+		
+		<!--网页头部start-->
+		<div id="header">
+		
+		  <!--logo、登陆部分start-->
+		  <div id="logo_login">
+			<!--logo部分start-->
+			<div id="logo"><img src="/static/images/web_logo/{$winfo.logo}" width="140" height="75"></div>
+			<!--logo部分end-->
+			<!--登陆部分start-->
+            {if isset({:session('hlogin.uname')}
+            <div id="a">
+                <ul>
+                    <li><a href="#">
+                    {if session('hlogin')['qx'] == 2}管理员
+                    {else /}普通用户
+                    {/if}{:session('hlogin.uname')}在线&nbsp;&nbsp;</a></li>
+                    <li><a> <img src="/static/images/user_img/{:session('hlogin.pic')}" width="50" height="50"></a>
+                    </li>
+                </ul>
+            </div>
+		   </div>
+            {else /}
+            <div id="login">
+                <form action="/dologin" method="post">
+                    <table>
+                        <tr>
+                            <td>
+                                <label>帐号</label>
+                            </td>
+                            <td>
+                                <input type="text" name="uname" />
+                            </td>
+                            <td width="80px">
+                                <label><a href="/useredit/login">立即注册</a></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>密码</label>
+                            </td>
+                            <td>
+                                <input type="password" name="pass" />
+                            </td>
+                            <td>
+                                <input type="submit" value="立即登录" />
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+		  </div>
+          {/if}
+		  <!--logo、登陆部分end-->
+		  
+		  <!--菜单部分start-->
+		  <div id="menu">
+			<ul>
+			  <li><a href="/">首页</a></li>
+			  <li class="line"></li>
+			</ul>
+            <div>
+            </div>
+		  </div>
+		  <!--菜单部分end-->
+			
+			<!--搜索部分start-->
+			<div id="search">
+            <form action="/search/list" method="get">
+				<table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td class="search_ico"></td>
+                        <td class="search_input">
+                            <input type="text" name="search" x-webkit-speech speech placeholder="请输入搜索内容" />
+                        </td>
+                        <td class="search_select">
+                            <a href="">帖子</a>
+                            <span class="select"></span>
+                        </td>
+                        <td class="search_btn">
+                            <input type="submit" value="搜索"/>
+                        </td>
+                        <td class="search_hot">
+                            <div>
+                                <strong>热搜:</strong>
+                                <a href="">交友</a>
+                                <a href="">教育</a>
+                                <a href="">幽默</a>
+                                <a href="">搞笑</a>
+                                <a href="">帮助</a>
+                                <a href="">折扣</a>
+                                <a href="">电影</a>
+                            </div>
+                        </td>
+                    </tr>
+				</table>
+            </form>
+			</div>
+			<!--搜索部分end-->
+			
+			<!--小提示部分start-->
+			<div id="tip">
+			
+				<!--路径部分start-->
+				<div id="path">
+				  <a href="/" class="index"></a>
+				  <em></em>
+				  <a href="" class="path_menu">论坛</a>
+				</div>
+				<!--路径部分end-->
+				
+				<!--统计部分start-->
+				<div id="count">
+				  今日: <em>1520</em>
+				  <span class="pipe">|</span>
+				  昨日: <em>1520</em>
+				  <span class="pipe">|</span>
+				  帖子: <em>1520</em>
+				  <span class="pipe">|</span>
+				  会员: <em>1520</em>
+				  <span class="pipe">|</span>
+				  欢迎新会员: <em><a href="">1520</a></em>
+				</div>
+				<!--统计部分end-->
+				
+			</div>
+			<!--小提示部分end-->
+			
+		</div>
+		<!--网页头部end-->
+    {block name="main"}
+		<!--内容部分start-->
+		<div class="content">
+        {php}$a = 0;{/php}        
+        {foreach $pinfo as $k => $v}
+        {php}$a++;{/php}
+            <!--分区部分start-->
+            <div class="section"> 
+                <!--分区标题部分start-->
+                <div class="section_title">
+                  <span class="section_title_left">{$v.name}</span>
+                  <span class="section_title_right">{if $a==1}分区1{else/}分区{$a}{/if}</span>
+                </div>
+                <!--分区标题部分end-->
+                    {foreach $cinfo as $k1 => $v1}
+                    {if $v.id == $v1.pid}
+                    <!--分区内容部分start-->
+                    <div class="section_content">
+                      <table cellspacing="0" celpadding="0">
+                        <tr>
+                          <td width="33%">
+                            <span class="section_content_ico">
+                              <img src="/static/home/images/forum_new.gif" title="Discuz!程序发布" />
+                            </span>
+                            <dl>
+                              <dd class="dd_title"><a href='tie/list/{$v1.id}'>{$v1.cname}</a></dd>
+                              <dd>
+                                <em>主题：54</em>,
+                                <em>帖子：244</em>
+                              </dd>
+                              <dd>
+                                <a href="">最后发表: 2012-11-1 10:22</a>
+                              </dd>
+                            </dl>
+                          </td>
+                        </tr>		
+                      </table>
+                    </div>
+                    <!--分区内容部分end-->
+                    {/if}
+                    {/foreach}   
+                </div>
+            <!--分区部分end-->
+            {/foreach} 
+            
+            <!--友情链接部分start-->
+            <div id="friend_link">
+                
+                <!--友情链接标题部分start-->
+                <div id="fri_title">
+                  <span>友情链接</span>
+                </div>
+                <!--友情链接标题部分end-->
+                
+                <!--友情链接内容部分start-->
+                {foreach $finfo as $k2 => $v2}
+                <div class="fri_content">
+                    <div class="fri_left">
+                    <img src="/static/images/Url_img/{$v2.pic}"  width = "100" height = "46"/></div>
+                    <div class="fri_right">
+                      <p><strong>{$v2.title}</strong></p>
+                      <p>{$v2.url}</p>
+                      <p>{$v2.descript}</p>
+                    </div>
+                </div>
+                {/foreach}
+                <!--友情链接内容部分end-->
+                
+            </div>
+            <!--友情链接部分end-->
+            
+        </div>
+    <!--内容部分end-->
+    	
+{/block}
+<!--尾部部分start-->
+	<div id="footer">
+		<!--尾部左侧部分start-->
+		<div id="footer_left">
+		  <p>Powered by <strong><a href="">ITXDL!</a></strong> <em>X1.0</em></p>
+		  <p class="xs0">{$winfo.copyright}</a></p>
+		</div>
+		<!--尾部左侧部分start-->
+		
+		<!--尾部右侧部分start-->
+		<div id="footer_right">
+		  <p>
+			<a href="">手机版</a>
+			<span class="pipe">|</span>
+			<strong>
+			  <a href="">{$winfo.wname}</a>
+			</strong>
+		  ( <a>京ICP证110024号|京网文[2011]0019-007号|北京公安备案:1101082242</a> )&nbsp;
+			<a href="" title="防水墙保卫网站远离侵害">
+		  </p>
+		  <p class="xs0">
+		  GMT+8, 2012-11-13 20:33
+		  <span id="debuginfo">
+		  , Processed in 0.030692 second(s), 2 queries
+		  , Gzip On, Memcached On.
+		  </span>
+		  </p>
+		</div>
+		<!--尾部右侧部分end-->
+	</div>
+	<!--尾部部分end-->
+</body>
+</html>
+{else /}网站正在维护中,敬请期待......
+{/if}

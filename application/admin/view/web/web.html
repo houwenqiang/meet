@@ -1,0 +1,72 @@
+{extend name="common/index"}
+
+{block name="main"}
+    <!--/sidebar-->
+       <div class="main-wrap">
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="">系统管理</a><span class="crumb-step">&gt;</span><span>网站配置</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-title">
+                <h1>网站基本信息</h1>
+            </div>
+            <div class="result-content">
+                 <form action="/web/update/{$winfo.id}" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                 
+                    <ul class="sys-info-list">
+                        <li>
+                            <label class="res-lab">网站名称</label>
+                            <input class="common-text required" id="title" name="wname" size="50" value="{$winfo.wname}" readonly type="text">
+                        </li>
+                        <li>
+                            <label class="res-lab">关键字</label>
+                            <input class="common-text required" id="title" name="wkey" size="50" value="{$winfo.wkey}" type="text">
+                        </li>
+                        <li>
+                            <label class="res-lab">版权所有</label>
+                            <input class="common-text required" id="title" name="copyright" size="50" value="{$winfo.copyright}" type="text">
+                        </li>
+                        <li>
+                            <label class="res-lab">网站描述</label>
+                            <input class="common-text required" id="title" name="descript" size="50" value="{$winfo.descript}" type="text">
+                        </li>
+                        <li>
+                            <label class="res-lab">logo</label>
+                            <input class="common-text required" id="title" name="logo" size="50" type="file">
+                        </li>
+                        <li>
+                            <label class="res-lab">预览</label>
+                            <img src="/static/images/web_logo/{$winfo.logo}" width="100" height="50">
+                        </li>
+                        <li>
+                            <label class="res-lab">网站状态</label>
+                            <input class="common-text required" id="title" name="status" size="50" value="1" type="radio"{if $winfo.status == 1}checked{/if}>开
+                            <input class="common-text required" id="title" name="status" size="50" value="0" type="radio" {if $winfo.status == 0}checked{/if}>关
+                        </li>
+                        <li>
+                            <label class="res-lab"></label><label class="res-lab"></label>
+                            <input class="btn btn6" value="确定" type="submit">
+                            <input class="btn btn6" value="重置" type="reset">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="result-wrap">
+                <div class="result-title">
+                    <h1>使用帮助</h1>
+                </div>
+                <div class="result-content">
+                    <ul class="sys-info-list">
+                        <li>
+                            <label class="res-lab">官方交流网站：</label><span class="res-info"><a>源码之家</a></span>
+                        </li>
+                        <li>
+                            <label class="res-lab">官方交流QQ群：</label><span class="res-info"><a class="qq-link"></a> </span>
+                        </li>
+                    </ul>
+                </div>
+            </form>   
+        </div>
+    </div>
+    <!--/main-->
+{/block}
